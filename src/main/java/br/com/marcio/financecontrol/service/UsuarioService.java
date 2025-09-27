@@ -27,7 +27,7 @@ public class UsuarioService {
 
     public UsuarioResponseDTO criarUsuario(UsuarioRequestDTO usuarioRequestDTO) {
         if (usuarioRepository.findByEmail(usuarioRequestDTO.email()).isPresent()) {
-            throw new IllegalStateException("Email já cadastrado.");
+                throw new IllegalStateException("Email já cadastrado.");
         }
 
         Usuario novoUsuario = usuarioMapper.toEntity(usuarioRequestDTO);
