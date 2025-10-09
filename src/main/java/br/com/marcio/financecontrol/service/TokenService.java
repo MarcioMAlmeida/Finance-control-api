@@ -37,7 +37,7 @@ public class TokenService {
 
     public String getSubject(String tokenJWT) {
         try {
-            Algorithm algoritmo = Algorithm.HMAC512(secret);
+            Algorithm algoritmo = Algorithm.HMAC256(secret);
             return JWT.require(algoritmo)
                     .withIssuer("Finance Control API")
                     .build()

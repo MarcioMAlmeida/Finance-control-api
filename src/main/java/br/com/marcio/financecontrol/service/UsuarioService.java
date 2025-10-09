@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsuarioService {
 
@@ -37,5 +39,12 @@ public class UsuarioService {
         Usuario usuarioSalvo = usuarioRepository.save(novoUsuario);
 
         return usuarioMapper.toResponseDTO(usuarioSalvo);
+    }
+
+    public List<UsuarioResponseDTO> listarUsuarios() {
+        return usuarioRepository.findAll()
+                .stream()
+                .map(usuarioMapper::toResponseDTO)
+                .toList();
     }
 }
