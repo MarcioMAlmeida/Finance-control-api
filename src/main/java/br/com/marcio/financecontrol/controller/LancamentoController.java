@@ -58,4 +58,16 @@ public class LancamentoController {
 
         return ResponseEntity.ok(lancamentoAtualizado);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<LancamentoResponseDTO> buscarLancamentoPorId(
+            @PathVariable Long id,
+            Authentication authentication
+    ) {
+        Usuario usuarioLogado = (Usuario) authentication.getPrincipal();
+
+        LancamentoResponseDTO lancamentoDTO = lancamentoService.buscarLancamentoPorId(id, usuarioLogado);
+
+        return ResponseEntity.ok(lancamentoDTO);
+    }
 }

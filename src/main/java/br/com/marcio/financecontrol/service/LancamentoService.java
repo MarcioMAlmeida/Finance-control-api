@@ -60,4 +60,15 @@ public class LancamentoService {
 
             return lancamentoMapper.toResponseDTO(lancamentoAtualizado);
     }
+
+    public LancamentoResponseDTO buscarLancamentoPorId(Long id, Usuario usuarioLogado) {
+        Lancamento lancamento = lancamentoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Lançamento não encontrado"));
+
+        if (!lancamento.getUsuario().getId().equals(usuarioLogado.getId())) {
+            throw new SecurityException("Acesso negado: Este lançamento não pertence ao usuário.");
+        }
+
+        return lancamentoMapper.toResponseDTO(lancamento);
+    }
 }
