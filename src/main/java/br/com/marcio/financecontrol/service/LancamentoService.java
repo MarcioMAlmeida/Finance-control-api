@@ -6,6 +6,7 @@ import br.com.marcio.financecontrol.mapper.LancamentoMapper;
 import br.com.marcio.financecontrol.model.Lancamento;
 import br.com.marcio.financecontrol.model.Usuario;
 import br.com.marcio.financecontrol.repository.LancamentoRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +40,24 @@ public class LancamentoService {
         return lancamentosDoUsuario.stream()
                 .map(lancamentoMapper::toResponseDTO)
                 .toList();
+    }
+
+    public LancamentoResponseDTO atualizarLancamento(Long id, LancamentoRequestDTO requestDTO, Usuario usuarioLogado) {
+
+            Lancamento lancamento = lancamentoRepository.findById(id)
+                    .orElseThrow(() -> new EntityNotFoundException("Lançamento não encontrado"));
+
+            if (!lancamento.getUsuario().getId().equals(usuarioLogado.getId())) {
+                throw new SecurityException("Acesso negado: Este lançamento não pertence ao usuário.");
+            }
+
+            lancamento.setDescricao(requestDTO.descricao());
+            lancamento.setValor(requestDTO.valor());
+            lancamento.setData(requestDTO.data());
+            lancamento.setTipo(requestDTO.tipo());
+
+            Lancamento lancamentoAtualizado = lancamentoRepository.save(lancamento);
+
+            return lancamentoMapper.toResponseDTO(lancamentoAtualizado);
     }
 }

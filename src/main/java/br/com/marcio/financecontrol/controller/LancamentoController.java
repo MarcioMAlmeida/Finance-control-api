@@ -45,4 +45,17 @@ public class LancamentoController {
 
         return ResponseEntity.ok(lancamentos);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<LancamentoResponseDTO> atualizarLancamento(
+            @PathVariable Long id,
+            @RequestBody @Valid LancamentoRequestDTO requestDTO,
+            Authentication authentication
+    ) {
+        Usuario usuarioLogado = (Usuario) authentication.getPrincipal();
+
+        LancamentoResponseDTO lancamentoAtualizado = lancamentoService.atualizarLancamento(id, requestDTO, usuarioLogado);
+
+        return ResponseEntity.ok(lancamentoAtualizado);
+    }
 }
