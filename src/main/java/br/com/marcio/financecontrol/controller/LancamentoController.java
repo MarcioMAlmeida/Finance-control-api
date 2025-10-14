@@ -6,6 +6,7 @@ import br.com.marcio.financecontrol.model.Usuario;
 import br.com.marcio.financecontrol.service.LancamentoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -69,5 +70,16 @@ public class LancamentoController {
         LancamentoResponseDTO lancamentoDTO = lancamentoService.buscarLancamentoPorId(id, usuarioLogado);
 
         return ResponseEntity.ok(lancamentoDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarLancamento(
+            @PathVariable Long id,
+            Authentication authentication
+    ) {
+        Usuario usuarioLogado = (Usuario) authentication.getPrincipal();
+
+        lancamentoService.deletarLancamento(id, usuarioLogado);
     }
 }
