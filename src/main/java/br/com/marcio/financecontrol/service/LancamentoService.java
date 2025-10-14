@@ -9,6 +9,8 @@ import br.com.marcio.financecontrol.repository.LancamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LancamentoService {
 
@@ -29,5 +31,13 @@ public class LancamentoService {
         Lancamento lancamentoSalvo = lancamentoRepository.save(novoLancamento);
 
         return lancamentoMapper.toResponseDTO(lancamentoSalvo);
+    }
+
+    public List<LancamentoResponseDTO> listarLancamentosPorUsuario(Usuario usuarioLogado) {
+        List<Lancamento> lancamentosDoUsuario = lancamentoRepository.findByUsuario(usuarioLogado);
+
+        return lancamentosDoUsuario.stream()
+                .map(lancamentoMapper::toResponseDTO)
+                .toList();
     }
 }

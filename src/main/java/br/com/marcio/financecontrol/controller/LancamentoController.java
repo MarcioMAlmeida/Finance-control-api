@@ -8,10 +8,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/lancamentos")
@@ -34,5 +33,16 @@ public class LancamentoController {
         LancamentoResponseDTO responseDTO = lancamentoService.criarLancamento(requestDTO, usuarioLogado);
 
         return ResponseEntity.ok(responseDTO);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<LancamentoResponseDTO>> listarLancamentos(
+            Authentication authentication
+    ) {
+        Usuario usuarioLogado = (Usuario) authentication.getPrincipal();
+
+        List<LancamentoResponseDTO> lancamentos = lancamentoService.listarLancamentosPorUsuario(usuarioLogado);
+
+        return ResponseEntity.ok(lancamentos);
     }
 }

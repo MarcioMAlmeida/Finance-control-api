@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface LancamentoRepository extends JpaRepository<Lancamento, Long> {
     List<Lancamento> findByUsuarioAndDataBetween(Usuario usuario, LocalDate start, LocalDate end);
+
+    List<Lancamento> findByUsuario(Usuario usuario);
 }
