@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: finance_db
+    environment:
+      - POSTGRES_DB=finance_control_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1419
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: finance_api
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/finance_control_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1419
+      - API_SECURITY_TOKEN_SECRET=token-seguranca-secreto
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
