@@ -110,4 +110,4 @@ Para executar a suíte de testes unitários:
 
 [ ] Deploy na nuvem (AWS/Render).
 
-## 🔌 Documentação Interativa (Swagger): Disponível em /swagger-ui/index.html ao rodar o projeto.
+### 🔌 Documentação Interativa (Swagger): Disponível em /swagger-ui/index.html ao rodar o projeto.
