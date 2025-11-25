@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jre-focal
+FROM eclipse-temurin:23-jre
 
 COPY target/*.jar app.jar
 
