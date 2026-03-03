@@ -33,6 +33,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios/esqueci-senha").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/usuarios/redefinir-senha").permitAll()
+
 
                         .anyRequest().authenticated()
                 )

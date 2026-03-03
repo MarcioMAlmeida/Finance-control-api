@@ -29,6 +29,9 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private String senha;
 
+    @Column(name = "codigo_recuperacao", length = 6)
+    private String codigoRecuperacao;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
