@@ -20,7 +20,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
       - API_SECURITY_TOKEN_SECRET=${JWT_SECRET}
     ports:
-      - "8080:8080"
+      - "192.168.10.5:8080:8080"
     depends_on:
       - db
 

@@ -19,6 +19,7 @@
 /Users/marcioalmeida/Documents/GitHub/finance-control-api/src/main/java/br/com/marcio/financecontrol/repository/LancamentoRepository.java
 /Users/marcioalmeida/Documents/GitHub/finance-control-api/src/main/java/br/com/marcio/financecontrol/repository/UsuarioRepository.java
 /Users/marcioalmeida/Documents/GitHub/finance-control-api/src/main/java/br/com/marcio/financecontrol/service/AutenticacaoService.java
+/Users/marcioalmeida/Documents/GitHub/finance-control-api/src/main/java/br/com/marcio/financecontrol/service/EmailService.java
 /Users/marcioalmeida/Documents/GitHub/finance-control-api/src/main/java/br/com/marcio/financecontrol/service/LancamentoService.java
 /Users/marcioalmeida/Documents/GitHub/finance-control-api/src/main/java/br/com/marcio/financecontrol/service/TokenService.java
 /Users/marcioalmeida/Documents/GitHub/finance-control-api/src/main/java/br/com/marcio/financecontrol/service/UsuarioService.java

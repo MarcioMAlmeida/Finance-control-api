@@ -1,0 +1,8 @@
+#! 0-finance-control-api-namespace.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: finance-control-api
+    labels:
+        com.docker.compose.project: finance-control-api

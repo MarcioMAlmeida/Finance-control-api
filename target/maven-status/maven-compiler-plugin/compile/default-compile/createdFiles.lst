@@ -5,12 +5,14 @@ br/com/marcio/financecontrol/dto/LancamentoResponseDTO.class
 br/com/marcio/financecontrol/exception/GlobalExceptionHandler.class
 br/com/marcio/financecontrol/dto/AutenticacaoRequestDTO.class
 br/com/marcio/financecontrol/FinanceControlApiApplication.class
+br/com/marcio/financecontrol/controller/UsuarioController$EsqueciSenhaRequestDTO.class
 br/com/marcio/financecontrol/service/LancamentoService.class
 br/com/marcio/financecontrol/dto/TokenResponseDTO.class
 br/com/marcio/financecontrol/model/Usuario.class
 br/com/marcio/financecontrol/model/TipoLancamento.class
 br/com/marcio/financecontrol/config/SecurityFilter.class
 br/com/marcio/financecontrol/config/SecurityConfig.class
+br/com/marcio/financecontrol/service/EmailService.class
 br/com/marcio/financecontrol/service/UsuarioService.class
 br/com/marcio/financecontrol/repository/UsuarioRepository.class
 br/com/marcio/financecontrol/mapper/LancamentoMapper.class

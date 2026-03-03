@@ -1,0 +1,41 @@
+#! api-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: api
+    namespace: finance-control-api
+    labels:
+        com.docker.compose.project: finance-control-api
+        com.docker.compose.service: api
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: finance-control-api
+            com.docker.compose.service: api
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: finance-control-api
+                com.docker.compose.service: api
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: finance-api
+                  image: finance-control-api-api
+                  imagePullPolicy: IfNotPresent
+                  env:
+                    - name: API_SECURITY_TOKEN_SECRET
+                      value: "token-seguranca-secreto-de-verdade-e-seguro-para-ninguem-descobrir"
+                    - name: SPRING_DATASOURCE_PASSWORD
+                      value: "1419"
+                    - name: SPRING_DATASOURCE_URL
+                      value: "jdbc:postgresql://db:5432/finance_control_db"
+                    - name: SPRING_DATASOURCE_USERNAME
+                      value: "postgres"
+                  ports:
+                    - name: api-8080
+                      containerPort: 8080
