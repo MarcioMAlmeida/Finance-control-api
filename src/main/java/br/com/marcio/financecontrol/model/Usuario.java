@@ -2,6 +2,7 @@ package br.com.marcio.financecontrol.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Usuario implements UserDetails {
 
     @Id
@@ -44,7 +46,6 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getUsername() {
-        // O nosso "username" é o e-mail.
         return this.email;
     }
 

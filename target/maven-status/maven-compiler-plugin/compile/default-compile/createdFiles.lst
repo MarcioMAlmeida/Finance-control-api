@@ -9,6 +9,7 @@ br/com/marcio/financecontrol/controller/UsuarioController$EsqueciSenhaRequestDTO
 br/com/marcio/financecontrol/service/LancamentoService.class
 br/com/marcio/financecontrol/dto/TokenResponseDTO.class
 br/com/marcio/financecontrol/model/Usuario.class
+br/com/marcio/financecontrol/dto/RedefinirSenhaDTO.class
 br/com/marcio/financecontrol/model/TipoLancamento.class
 br/com/marcio/financecontrol/config/SecurityFilter.class
 br/com/marcio/financecontrol/config/SecurityConfig.class
@@ -22,5 +23,6 @@ br/com/marcio/financecontrol/model/Lancamento.class
 br/com/marcio/financecontrol/repository/LancamentoRepository.class
 br/com/marcio/financecontrol/dto/LancamentoRequestDTO.class
 br/com/marcio/financecontrol/controller/AutenticacaoController.class
+br/com/marcio/financecontrol/model/Usuario$UsuarioBuilder.class
 br/com/marcio/financecontrol/service/TokenService.class
 br/com/marcio/financecontrol/controller/LancamentoController.class

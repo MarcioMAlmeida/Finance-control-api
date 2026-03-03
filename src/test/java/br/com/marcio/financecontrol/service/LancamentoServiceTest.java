@@ -42,7 +42,7 @@ class LancamentoServiceTest {
     @Test
     void deveCriarLancamento_QuandoDadosValidos() {
         LancamentoRequestDTO requestDTO = new LancamentoRequestDTO("Teste", new BigDecimal("0.1"), LocalDate.parse("2025-10-25"), DESPESA);
-        Usuario usuarioLogado = new Usuario(1L, "Teste", "teste@email.com", "senhaCriptografada");
+        Usuario usuarioLogado = new Usuario(1L, "Teste", "teste@email.com", "senhaCriptografada", null);
         Lancamento lancamentoMapeado = new Lancamento(null, "Teste", new BigDecimal("0.1"), LocalDate.parse("2025-10-25"), DESPESA, usuarioLogado);
         LancamentoResponseDTO responseEsperado = new LancamentoResponseDTO(1L, "Teste", new BigDecimal("0.1"), LocalDate.parse("2025-10-25"), DESPESA);
 
@@ -68,7 +68,7 @@ class LancamentoServiceTest {
     @Test
     void deveLancarExcecao_QuandoAtualizarLancamentoNaoEncontrado() {
         LancamentoRequestDTO requestDTO = new LancamentoRequestDTO("Dados Atualizados", BigDecimal.TEN, LocalDate.now(), TipoLancamento.RECEITA);
-        Usuario usuarioLogado = new Usuario(1L, "Teste", "teste@email.com", "senha");
+        Usuario usuarioLogado = new Usuario(1L, "Teste", "teste@email.com", "senha",null);
         Long idInexistente = 99L;
 
         when(lancamentoRepository.findById(idInexistente)).thenReturn(Optional.empty());
@@ -83,9 +83,9 @@ class LancamentoServiceTest {
         LancamentoRequestDTO requestDTO = new LancamentoRequestDTO("Dados Atualizados", BigDecimal.TEN, LocalDate.now(), TipoLancamento.RECEITA);
         Long lancamentoId = 1L;
 
-        Usuario usuarioLogado = new Usuario(1L, "Usuário Logado", "logado@email.com", "senha1");
+        Usuario usuarioLogado = new Usuario(1L, "Usuário Logado", "logado@email.com", "senha1", null);
 
-        Usuario usuarioDono = new Usuario(2L, "Dono do Lançamento", "dono@email.com", "senha2");
+        Usuario usuarioDono = new Usuario(2L, "Dono do Lançamento", "dono@email.com", "senha2", null);
 
         Lancamento lancamentoExistente = new Lancamento(lancamentoId, "Lançamento Original", BigDecimal.ONE, LocalDate.now(), TipoLancamento.DESPESA, usuarioDono);
 
@@ -100,9 +100,9 @@ class LancamentoServiceTest {
     void deveLancarExcecao_QuandoDeletarLancamentoDeOutroUsuario() {
         Long lancamentoId = 1L;
 
-        Usuario usuarioLogado = new Usuario(1L, "Usuário Logado", "logado@email.com", "senha1");
+        Usuario usuarioLogado = new Usuario(1L, "Usuário Logado", "logado@email.com", "senha1", null);
 
-        Usuario usuarioDono = new Usuario(2L, "Dono do Lançamento", "dono@email.com", "senha2");
+        Usuario usuarioDono = new Usuario(2L, "Dono do Lançamento", "dono@email.com", "senha2",null);
 
         Lancamento lancamentoExistente = new Lancamento(lancamentoId, "Lançamento Original", BigDecimal.ONE, LocalDate.now(), TipoLancamento.DESPESA, usuarioDono);
 

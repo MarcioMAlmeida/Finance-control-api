@@ -37,7 +37,7 @@ class UsuarioServiceTest {
     @Test
     void deveCriarUsuario_QuandoDadosValidos() {
         UsuarioRequestDTO requestDTO = new UsuarioRequestDTO("Teste", "teste@email.com", "senha123");
-        Usuario usuarioMapeado = new Usuario(null, "Teste", "teste@email.com", null);
+        Usuario usuarioMapeado = new Usuario(null, "Teste", "teste@email.com", null, null);
         UsuarioResponseDTO responseEsperado = new UsuarioResponseDTO(1L, "Teste", "teste@email.com");
 
         when(usuarioRepository.findByEmail("teste@email.com")).thenReturn(Optional.empty());
@@ -64,7 +64,7 @@ class UsuarioServiceTest {
     @Test
     void naoDeveCriarUsuario_QuandoDadosInvalidos() {
         UsuarioRequestDTO requestDTO = new UsuarioRequestDTO("Teste", "teste@email.com", "senha123");
-        Usuario usuarioMapeado = new Usuario(null, "Teste", "teste@email.com", null);
+        Usuario usuarioMapeado = new Usuario(null, "Teste", "teste@email.com", null, null);
 
         when(usuarioRepository.findByEmail("teste@email.com")).thenReturn(Optional.of(usuarioMapeado));
 
