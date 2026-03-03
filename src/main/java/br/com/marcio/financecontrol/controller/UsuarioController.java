@@ -60,7 +60,6 @@ public class UsuarioController {
     @PostMapping("/redefinir-senha")
     public ResponseEntity<String> redefinirSenha(@RequestBody RedefinirSenhaDTO request) {
         try {
-
             usuarioService.redefinirSenha(request.email(), request.codigo(), request.novaSenha());
             return ResponseEntity.ok("Senha alterada com sucesso!");
         } catch (IllegalArgumentException e) {
